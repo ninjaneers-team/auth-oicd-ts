@@ -1,0 +1,43 @@
+{
+  "name": "@ninjaneers/auth-oidc-ts",
+  "version": "2.0.0",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Ninjaneers GmbH",
+  "description": "Small TypeScript library to authenticate with OpenID Connect auth service (f.e. Keycloak)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninjaneers-team/auth-oidc-ts.git"
+  },
+  "keywords": [
+    "oidc",
+    "oauth",
+    "oauth2",
+    "authentication",
+    "login",
+    "keycloak",
+    "typescript",
+    "react",
+    "angular",
+    "browser"
+  ],
+  "scripts": {
+    "lint": "eslint",
+    "test": "vitest run",
+    "build": "vite build && tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/node": "^24.10.0",
+    "@vitest/eslint-plugin": "1.6.27",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}

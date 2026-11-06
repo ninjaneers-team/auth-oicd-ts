@@ -1,0 +1,96 @@
+# Client OpenID Connect library for the web
+
+## Typescript fork of [auth-oicd](https://github.com/Misha999777/auth-oidc), forked from version 1.3.0, originaly created by [Mykhailo Hroshevyi](https://github.com/Misha999777)
+
+## Main features:
+1. Logging user in using redirect to the auth service
+2. Getting user info claims
+3. Supplying access token for requests to the back-end
+4. Automatic refreshing of the access token with refresh token when it expires
+5. Logging user out from the application and from the auth service
+6. Working with React, Angular and other popular front-end libraries
+7. Supports TypeScript and ESModules
+
+## How to use
+
+### Quick Start Example
+
+```typescript
+import { AuthService } from 'auth-oidc';
+
+const config = {
+  authority: 'http://example.com/realms/my-realm',
+  clientId: 'my-app-id',
+  autoLogin: false
+};
+
+const authService = new AuthService(config);
+
+if (!authService.isLoggedIn()) {
+  authService.login();
+} else {
+  const token = authService.getToken();
+  console.log('User Token:', token);
+}
+```
+### 1. Install library using npm
+
+```bash
+npm install auth-oidc --save
+```
+
+### 2. Import AuthService
+
+```typescript
+import { AuthService } from 'auth-oidc';
+```
+
+### 3. Initialize AuthService
+
+```typescript
+const authService = new AuthService(config);
+```
+
+**Config object fields:**
+
+| Property       | Default                         | Description                                                     |
+| :------------- | :------------------------------ | :---------------------------------------------------------------|
+| `authority`    | -                               | Authentication authority (e.g., `http://[host]/realms/[realm]`) |
+| `clientId`     | -                               | ID of the application registered within authentication service  |
+| `autoLogin`    | `false`                         | Whether authentication should start automatically on page load  |
+| `callbackUrl`  | `window.location.href`          | A URL the user will be returned to after login/logout           |
+| `errorHandler` | `(error) => console.log(error)` | Callback function that will be called in case of auth errors    |
+
+### 4. Start login
+Login will be started automatically if it was configured to do so, if no, you can start
+it by:
+```typescript
+authService.login();
+```
+You can also override a URL the user will be returned to after login:
+```typescript
+authService.login('http://localhost:3000/page');
+```
+
+### 5. Check login status
+You can check login status with:
+```typescript
+const isLoggedIn = authService.isLoggedIn();
+```
+
+### 6. Get user info claims
+To get user info claim you can use:
+```typescript
+const name = authService.getUserInfo('name');
+```
+
+### 7. Get access token to make requests
+You can get user access token with:
+```typescript
+const token = authService.getToken();
+```
+
+## Copyright
+
+Released under the MIT License.
+See the [LICENSE](https://github.com/ninjaneers-team/auth-oidc-ts/blob/master/LICENSE) file.
